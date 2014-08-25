@@ -7,6 +7,14 @@ class indexController extends \classes\Controller\Controller{
         parent::__construct($vars);
     }
     public function index(){
+        if($this->LoadModel('usuario/perfil', 'perf')->hasPermissionByName('CONTATO_ADMINISTRAR')){
+            Redirect(LINK . "/messages");
+        }
+        if(!empty($_POST)){return $this->entrarEmContato($_POST);}
+        $this->displayForm();
+    }
+    
+    public function contact(){
         if(!empty($_POST)){return $this->entrarEmContato($_POST);}
         $this->displayForm();
     }
@@ -27,6 +35,7 @@ class indexController extends \classes\Controller\Controller{
             Redirect(LINK."/index");
         }
         $cod = $this->vars[0];
+        $this->model->setContactMessageRead($cod);
         $this->registerVar('item', $this->model->getItem($cod));
         $this->registerVar('component', 'contato/index');
         $this->registerVar('comp_action', 'show');
@@ -42,7 +51,7 @@ class indexController extends \classes\Controller\Controller{
     }
     
     private function displayForm(){
-        $this->registerVar('dados', $this->model->getDados());
+        $this->registerVar('dados', $this->model->getContactData());
         $this->genTags("Contato ". SITE_NOME, "envie um email para ". SITE_NOME, 'fale com ' . SITE_NOME);
         $this->display("contato/index/index");
     }

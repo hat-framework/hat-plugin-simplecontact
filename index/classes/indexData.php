@@ -46,11 +46,32 @@ class contato_indexData extends \classes\Model\DataModel{
          ),
 
         'texto' => array(
-            'name'        => 'Texto',
+            'name'        => 'Mensagem',
             'type'        => 'text',
-            'display'     => true,
             'search'      => true,
          ),
+        
+        'lida' => array(
+            'name'        => 'Lida',
+            'type'        => 'enum',
+            'default'     => 'unread',
+            'options'     => array(
+                'read' => 'Lida',
+                'unread' => 'Não Lida'
+            ),
+            'display' => true,
+            'especial' => 'hide'
+         ),
+        
+        'data' => array(
+	    'name'      => 'Data',
+	    'type'      => 'timestamp',
+            'default'   => "CURRENT_TIMESTAMP",
+            'especial'  => 'hide'
+        ),
+        'button' => array(
+            'button' => 'Enviar Mensagem'
+        )
     );
     
 }

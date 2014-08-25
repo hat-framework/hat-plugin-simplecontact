@@ -29,5 +29,17 @@ class contatoActions extends Actions{
             "menu" => array()
         ),
         
+        "contato/index/messages" => array(
+            "label" => "Mensagens Recebidas", "publico" => "s", "default" => "n",
+            "permission" => "CONTATO_ADMINISTRAR",
+            "menu" => array()
+        ),
+        
+        "contato/index/visualizar" => array(
+            "label" => "Visualizar Mensagem", "publico" => "s", "default" => "n",
+            "permission" => "CONTATO_ADMINISTRAR",
+            "menu" => array()
+        ),
+        
     );
 }
