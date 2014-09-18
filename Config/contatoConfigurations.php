@@ -3,12 +3,7 @@
 class contatoConfigurations extends \classes\Classes\Options{
           
     protected $menu = array(
-        array(
-            'menuid' => 'contato',
-            'menu'   => 'Contato',
-            'url'    => 'contato/index/index',
-            'ordem'  => '10',
-        )
+        array()
     );
     
      protected $files   = array(
